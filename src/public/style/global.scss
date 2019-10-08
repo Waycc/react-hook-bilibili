@@ -1,0 +1,23 @@
+@import "./pxtorem";
+
+body {
+  font-size: pxToRem(16);
+  margin: 0
+}
+
+a {
+  text-decoration: none;
+  border: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.normal-arrow-size {
+  width: pxToRem(14);
+  height: pxToRem(14);
+}
+
+.arrow-up {
+  transform: rotate(180deg);
+}

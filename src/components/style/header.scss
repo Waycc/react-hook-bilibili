@@ -1,0 +1,70 @@
+@import "../../public/style/pxtorem";
+@import "../../public/style/mixin";
+
+.app-header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: pxToRem(44);
+  align-items: center;
+  justify-content: flex-start;
+  padding: pxToRem(8) 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 9999;
+  top: 0;
+}
+
+.app-header-logo {
+  display: inline-block;
+  width: pxToRem(62);
+  height: pxToRem(28);
+  margin-left: pxToRem(16);
+}
+
+.app-header-search {
+  width: pxToRem(132);
+  height: pxToRem(24);
+  line-height: pxToRem(24);
+  margin-left: pxToRem(16);
+  margin-right: pxToRem(16);
+  border-radius: pxToRem(25);
+  background-color: #f4f4f4;
+  color: #999;
+  font-size: pxToRem(12);
+  box-sizing: border-box;
+  padding: 0 pxToRem(8);
+
+  .header-search-icon {
+    width: pxToRem(14);
+    height: pxToRem(18);
+    margin-right: pxToRem(3);
+    vertical-align:pxToRem(2);
+  }
+
+  .header-search-text {
+    width: pxToRem(92);
+    @include ellipse
+  }
+}
+
+.bili-tv-icon {
+  width: pxToRem(24);
+  height: pxToRem(24);
+  border-radius: 50%;
+  margin-right: pxToRem(16);
+}
+
+.app-header-download-button {
+  width: pxToRem(80);
+  height: pxToRem(25);
+  line-height: pxToRem(25);
+  color: #fff;
+  text-align: center;
+  border: pxToRem(1) solid #fb7299;
+  background-color: #fb7299;
+  font-size: pxToRem(14);
+  border-radius: pxToRem(4);
+  box-sizing: border-box;
+  margin-right: pxToRem(16);
+}
