@@ -1,4 +1,4 @@
-export async function post(url, data={}) {
+export async function post(url, data = {}) {
   let result = await fetch(url, {
     method: 'post',
     body: JSON.stringify(data),
@@ -6,27 +6,29 @@ export async function post(url, data={}) {
       'Content-Type': 'application/json: charset=utf-8'
     }
   });
-  let jsonData = {success: false, message: ''};
+  let jsonData = {success: false, message: '', errorCode: 0};
   try {
     jsonData = await result.json()
   } catch (e) {
-    jsonData.message = e
+    jsonData.message = e;
+    jsonData.errorCode = result.status
   }
   return jsonData
 }
 
-export async function get(url, data={}) {
+export async function get(url, data = {}) {
   let params = ''
   Object.keys(data).forEach(key => {
     params = params + '&' + key + '=' + data[key]
   })
   if (params) url = url + '?' + params;
   let result = await fetch(url);
-  let jsonData = {success: false, message: ''};
+  let jsonData = {success: false, message: '', errorCode: 0};
   try {
     jsonData = await result.json();
   } catch (e) {
-    jsonData.message = e
+    jsonData.message = e;
+    jsonData.errorCode = result.status
   }
   return jsonData
 }

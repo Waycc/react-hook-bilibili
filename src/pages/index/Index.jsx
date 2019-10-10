@@ -1,16 +1,49 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ChannelBar from "../../components/ChannelBar";
 import Carousel from "../../components/Carousel";
+import Api from '../../api/index'
+import VideoCard from "../../components/VideoCard";
+import './style/index.scss'
+import {getPicUrl} from "../../util/tools";
 
 export default function Index() {
-    return (
-        <div>
-            <ChannelBar/>
-          <Carousel>
-            <img style={{ width: 200, position: "relative" }} src={'http://i0.hdslb.com/bfs/archive/6c1948116cee176f9d1ab49665840be10d9404d9.jpg'}/>
-            <img style={{ width: 200, position: "relative" }} src={'http://i0.hdslb.com/bfs/archive/9ed81592389c6827a419427c1e33af35a53e0139.jpg'}/>
-          </Carousel>
-            Index
-        </div>
-    )
+  let [locData, setLocData] = useState([]);
+  let [rankingData, setRankingData] = useState([]);
+
+  useState(async () => {
+    let locData = await Api.fetchLoc();
+    setLocData(locData.data)
+  }, [locData]);
+
+  useState(async () => {
+    let rankingIndex = await Api.fetchIndexRanking();
+    setRankingData(rankingIndex.data)
+  }, [rankingData])
+
+  return (
+    <div className={'channel-index'}>
+      <ChannelBar/>
+      <Carousel>
+        {
+          locData.map(imgItem => {
+            return (
+              <a href={imgItem.url} key={imgItem.id}>
+                <img src={getPicUrl(imgItem.pic, "@480w_300h")}/>
+              </a>
+            )
+          })
+        }
+      </Carousel>
+      <div className={'index-video-area-container'}>
+        {
+          rankingData.map(rkData => {
+            return (
+              <VideoCard data={rkData} key={rkData.aid}/>
+            )
+          })
+        }
+
+      </div>
+    </div>
+  )
 }

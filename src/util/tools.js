@@ -1,3 +1,5 @@
+import {PIC_URL} from "../api/url";
+
 export function createChannelBar(data) {
   let partitionList = data.partitionList;
   // 树结构的导航栏
@@ -41,4 +43,26 @@ export function isEmpty(obj) {
     empty = true
   }
   return empty
+}
+
+export function getPicSuffix(){
+  const terminal = {
+    isIOS: /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent),
+    isAndroid: /(Android)/i.test(navigator.userAgent)
+  }
+  let suffix = ".webp";
+  if (terminal.isIOS ===  true) {
+    suffix = ".jpg";
+  } else if (terminal.isAndroid === true) {
+    suffix = ".webp";
+  } else {
+    suffix = ".jpg";
+  }
+  return suffix;
+}
+
+export function getPicUrl(url, format) {
+  let suffix = getPicSuffix();
+  // picURL + "?pic=" + url + "@480w_300h.webp"
+  return `${PIC_URL}?pic=${url}${format + suffix}`;
 }

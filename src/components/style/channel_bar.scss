@@ -99,8 +99,9 @@
     top: pxToRem(44);
     background-color: #fff;
     transform: translateY(-100%);
-    transition: transform .6s;
+    transition: transform .3s;
     padding: 0 pxToRem(5);
+    z-index: 99;
     -webkit-perspective: 1000;
 
     .arrow-container {
