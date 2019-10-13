@@ -1,0 +1,55 @@
+@import '../../public/style/pxtorem';
+
+.channel-video-area {
+  .title-container {
+    width: pxToRem(363);
+    height: pxToRem(40);
+    position: relative;
+    box-sizing: border-box;
+    line-height: pxToRem(40);
+    margin-left: pxToRem(12);
+
+    .title {
+      font-size: pxToRem(16);
+      color: #212121;
+    }
+
+    .title-right {
+      position: absolute;
+      right: pxToRem(16);
+      top: 0;
+
+      .text {
+        display: inline-block;
+        margin-right: pxToRem(6);
+      }
+
+      .arrow-right {
+        display: inline-block;
+        width: pxToRem(14);
+        height: pxToRem(14);
+        vertical-align: pxToRem(-2);
+      }
+
+      & a {
+        font-size: 14px;
+        color: #999;
+      }
+    }
+  }
+
+  .video-container {
+    width: 100%;
+    min-height: pxToRem(142);
+    padding: pxToRem(6);
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .loading-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

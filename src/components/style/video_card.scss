@@ -2,24 +2,51 @@
 
 .video-card-container {
   display: inline-block;
-  width: pxToRem(181);
+  width: pxToRem(179);
   height: pxToRem(143);
   box-sizing: border-box;
-  float: left;
   margin-bottom: pxToRem(24);
 
   .img-container {
-    width: pxToRem(170);
+    width: pxToRem(168);
     height: pxToRem(106);
     margin: 0 auto;
     border-radius: pxToRem(8);
     overflow: hidden;
+    position: relative;
+
+    .play-view-container {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      bottom: 0;
+      left: 0;
+      color: #fff;
+      font-size: pxToRem(12);
+      padding-left: pxToRem(8);
+      padding-bottom: pxToRem(3);
+      background: linear-gradient(180deg,rgba(33,33,33,0),rgba(33,33,33,.5));
+
+      & div:first-child {
+        margin-right: pxToRem(24);
+      }
+
+      .text {
+        margin-left: pxToRem(6);
+      }
+
+      .icon {
+        width: pxToRem(16);
+        height: pxToRem(16);
+        vertical-align: pxToRem(-3);
+      }
+    }
   }
   .title-container {
-    width: pxToRem(170);
+    width: pxToRem(168);
     height: pxToRem(32);
     margin: pxToRem(8) auto 0 auto;
-    padding: 0 pxToRem(5);
+    padding: 0 pxToRem(3);
     box-sizing: border-box;
     overflow: hidden;
     word-break: break-word;

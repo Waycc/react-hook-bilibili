@@ -66,3 +66,8 @@ export function getPicUrl(url, format) {
   // picURL + "?pic=" + url + "@480w_300h.webp"
   return `${PIC_URL}?pic=${url}${format + suffix}`;
 }
+
+export function numberToW(num) {
+  if (num < 10000) return num;
+  return `${(num / 10000).toFixed(1)}万`
+}

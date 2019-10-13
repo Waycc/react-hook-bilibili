@@ -10,7 +10,7 @@ let channelPathRe = pathToRegexp('/channel/:rid')
 
 const ChannelBar = function (props) {
   let {channelBarList = [], channelBarMap = {}} = useMappedState(useCallback(state => state.channelBar, []));
-  let [channelModalVisible, setChannelModalVisible] = useState(false)
+  let [channelModalVisible, setChannelModalVisible] = useState(false);
 
   let match = channelPathRe.exec(props.location.pathname);
   let currentRid = 0;
@@ -21,7 +21,7 @@ const ChannelBar = function (props) {
   // 如果当前所选频道是二级频道，就从一级频道中取出二级频道渲染
   let childChannel = currentChannel.children || [];
   if (!currentChannel.isParent) {
-    let parentChannel = channelBarMap[currentChannel.parentId] || {}
+    let parentChannel = channelBarMap[currentChannel.parentId] || {};
     childChannel = parentChannel.children || []
   }
   let isSelected = (rid, channelBar) => {

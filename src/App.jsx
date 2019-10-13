@@ -15,8 +15,10 @@ function App() {
 
   return (
     <Router>
-      <Header/>
-      <NestRoutes/>
+      <div style={{ backgroundColor: '#f4f4f4' }}>
+        <Header/>
+        <NestRoutes/>
+      </div>
     </Router>
   );
 }

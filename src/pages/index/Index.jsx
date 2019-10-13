@@ -21,14 +21,14 @@ export default function Index() {
   }, [rankingData])
 
   return (
-    <div className={'channel-index'}>
+    <div className={'channel-index video-card-area'}>
       <ChannelBar/>
       <Carousel>
         {
           locData.map(imgItem => {
             return (
               <a href={imgItem.url} key={imgItem.id}>
-                <img src={getPicUrl(imgItem.pic, "@480w_300h")}/>
+                <img alt='' src={getPicUrl(imgItem.pic, "@480w_300h")}/>
               </a>
             )
           })
