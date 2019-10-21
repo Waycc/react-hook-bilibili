@@ -2,7 +2,9 @@
 
 .channel-bar-container {
   position: fixed;
+  width: 100%;
   top: pxToRem(44);
+  background-color: #ffffff;
   z-index: 99;
 
   .first-class-tab-item {

@@ -15,9 +15,11 @@ function App() {
 
   return (
     <Router>
-      <div style={{ backgroundColor: '#f4f4f4' }}>
+      <div>
         <Header/>
-        <NestRoutes/>
+        <div className={'content-container'}>
+          <NestRoutes/>
+        </div>
       </div>
     </Router>
   );

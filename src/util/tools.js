@@ -67,7 +67,36 @@ export function getPicUrl(url, format) {
   return `${PIC_URL}?pic=${url}${format + suffix}`;
 }
 
-export function numberToW(num) {
+export function numberToW(num, suffix='万') {
   if (num < 10000) return num;
-  return `${(num / 10000).toFixed(1)}万`
+  return `${(num / 10000).toFixed(1)}${suffix}`
+}
+
+export const getPubdate = (timestamp) => {
+  const publicDate = new Date(timestamp * 1000); // unix时间转换成本地时间戳
+  let publicDateStr = "";
+  const date = new Date();
+  if (publicDate.getFullYear() === date.getFullYear()) {
+    if (publicDate.getMonth() === date.getMonth()) {
+      const diffDate = date.getDate() - publicDate.getDate();
+      switch (diffDate) {
+        case 0:
+          if (date.getHours() - publicDate.getHours() === 0) {
+            publicDateStr = date.getMinutes() - publicDate.getMinutes() + "分钟前";
+          } else {
+            publicDateStr = date.getHours() - publicDate.getHours() + "小时前";
+          }
+          break;
+        default:
+          publicDateStr = publicDate.getMonth() + 1 + "-" + publicDate.getDate();
+      }
+    } else {
+      publicDateStr = publicDate.getMonth() + 1 + "-" + publicDate.getDate();
+    }
+  } else {
+    publicDateStr = publicDate.getFullYear() + "-" +
+      (publicDate.getMonth() + 1) + "-" +
+      publicDate.getDate();
+  }
+  return publicDateStr;
 }

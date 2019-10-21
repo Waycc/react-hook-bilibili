@@ -180,6 +180,7 @@ let Carousel = function (props) {
     startAutoPlay()
   };
 
+  console.log(childrenCount, 'childrenCount')
   return (
     <div className={'carousel-outer-container'} >
       <div className={'carousel-wrap'}>
@@ -191,16 +192,19 @@ let Carousel = function (props) {
           {innerItems}
         </div>
       </div>
-      <div className={'carousel-button-wrap '}>
-        {
-          [...new Array(childrenCount).keys()].map(key => {
-            key = childrenCount > 1 ? key + 1 : key;
-            return (
-              <span key={key} className={`carousel-button ${currentIndex === key ? 'selected' : ''}`}/>
-            )
-          })
-        }
-      </div>
+      {
+        childrenCount === 0 ? null :
+        <div className={'carousel-button-wrap '}>
+          {
+            [...new Array(childrenCount).keys()].map(key => {
+              key = childrenCount > 1 ? key + 1 : key;
+              return (
+                <span key={key} className={`carousel-button ${currentIndex === key ? 'selected' : ''}`}/>
+              )
+            })
+          }
+        </div>
+      }
     </div>
   );
 };

@@ -39,7 +39,7 @@ let ChannelVideoArea = function (props) {
   if (limit) {
     videos = videos.slice(0, limit)
   }
-  console.log(isParent, 'isParent');
+
   return (
     <div className={'channel-video-area'}>
       <div className={'title-container'}>

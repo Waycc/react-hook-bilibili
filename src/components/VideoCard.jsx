@@ -4,6 +4,9 @@ import {getPicUrl, numberToW} from "../util/tools";
 import PropTypes from "prop-types";
 import PlayIcon from '../public/img/play-box-outline.svg'
 import DanMuShu from '../public/img/danmushu.svg'
+import {Link} from "react-router-dom";
+import LazyLoadImg from "./LazyLoadImg";
+import TVIcon from '../public/img/tv.svg'
 
 let defaultProps = {
   data: [],
@@ -19,10 +22,13 @@ let VideoCard = function (props) {
   if (data.pic.indexOf("@320w_200h") === -1) {
     data.pic = getPicUrl(data.pic, "@320w_200h");
   }
+
   return (
     <div className={'video-card-container'}>
-      <div className={'img-container'}>
-        <img alt={data.title} src={data.pic} style={{ width: '100%', height: '100%' }}/>
+      <Link to={`/video/${data.aid}`} className={'img-container'}>
+        <LazyLoadImg src={data.pic} className={'img'}/>
+        <TVIcon className={'icon'}/>
+        {/*<img alt={data.title} src={data.pic} style={{ width: '100%', height: '100%' }}/>*/}
         {
           (!!data.play || !!data.video_review )
             ?
@@ -44,7 +50,7 @@ let VideoCard = function (props) {
           </div>
             : null
         }
-      </div>
+      </Link>
       <div className={'title-container'}>
         <p>{data.title}</p>
       </div>

@@ -1,0 +1,97 @@
+@import "../../../public/style/pxtorem";
+
+.video-container {
+  background-color: #fff;
+
+  .video-desc {
+    margin-top: pxToRem(24);
+
+    .title-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: pxToRem(8);
+
+      .hot-tag {
+        display: inline-block;
+        width: pxToRem(52);
+        height: pxToRem(24);
+        line-height: pxToRem(24);
+        border-radius: pxToRem(12);
+        color: #fb7299;
+        text-align: center;
+        background-color: #f4f4f4;
+        font-size: pxToRem(12);
+        padding: 0 pxToRem(3) 0 0;
+        box-sizing: border-box;
+        margin-left: pxToRem(8);
+
+        .hot-tag-icon {
+          width: pxToRem(16);
+          height: pxToRem(16);
+          vertical-align: pxToRem(-3);
+          margin-right: pxToRem(2);
+        }
+      }
+
+      .title {
+        display: inline-block;
+        width: pxToRem(272);
+        color: #212121;
+        font-size: pxToRem(16);
+        margin-left: pxToRem(8);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-right: pxToRem(32);
+      }
+
+      .arrow{
+        position: absolute;
+        width: pxToRem(18);
+        height: pxToRem(18);
+        right: pxToRem(12);
+      }
+    }
+
+    .detail-container {
+      padding: 0 pxToRem(8);
+      .owner {
+        font-size: pxToRem(12);
+        color: #212121;
+        margin-right: pxToRem(16);
+      }
+      .view, .danmu, .date {
+        color: #999;
+        font-size: pxToRem(12);
+        margin-right: pxToRem(8);
+      }
+      .warning-text {
+        color: #999;
+        font-size: pxToRem(12);
+        margin-top: pxToRem(16);
+        //margin-bottom: pxToRem(10);
+      }
+      .desc-detail {
+        white-space: pre-line;
+        word-break: break-all;
+        color: #999;
+        font-size: pxToRem(12);
+        line-height: 1.5;
+      }
+      .bread-crumbs {
+        font-size: pxToRem(12);
+
+        .bread-item {
+          color: #fb7299;
+          margin-right: pxToRem(5);
+          &::after {
+            content: '>';
+            color: #ccc;
+            margin-left: pxToRem(5);
+          }
+        }
+      }
+    }
+  }
+}

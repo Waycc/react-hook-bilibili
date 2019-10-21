@@ -1,5 +1,6 @@
 import Channel from '../pages/channel/Channel'
 import Index from "../pages/index/Index";
+import Video from "../pages/video/Video";
 
 export default [
   {
@@ -9,5 +10,9 @@ export default [
   {
     path: '/channel/:rid',
     component: Channel
+  },
+  {
+    path: '/video/:aid',
+    component: Video
   }
 ]

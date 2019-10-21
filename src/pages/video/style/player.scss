@@ -1,0 +1,102 @@
+@import "../../../public/style/pxtorem";
+
+.player-container {
+  position: relative;
+  width: pxToRem(375);
+  height: pxToRem(211);
+  background-color: rgba(60,60,60,.5);
+
+  .cover-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+  }
+
+  .control-container {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: pxToRem(44);
+    line-height: pxToRem(44);
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    border: 0 solid #e2e2e2;
+    color: #fff;
+    padding: 0 pxToRem(10);
+    z-index: 2;
+    align-items: center;
+
+    & > div {
+      display: inline-block;
+    }
+
+    .bias {
+      display: inline-block;
+      padding: 0 pxToRem(2);
+      font-size: pxToRem(14);
+      vertical-align: pxToRem(1);
+    }
+
+    .icon-container {
+      margin-left: pxToRem(24);
+      line-height: 1;
+
+      .icon {
+        width: pxToRem(24);
+        height: pxToRem(24);
+
+        &:last-child {
+          margin-left: pxToRem(24);
+        }
+      }
+    }
+
+    //滑动条
+    .control-slider-container {
+      position: relative;
+      width: pxToRem(145);
+      height: pxToRem(3);
+      background-color: #4c4c4c;
+      vertical-align: pxToRem(12);
+      margin-left: pxToRem(12);
+
+      .active-slider {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #de698c;
+
+        &::after {
+          content: '';
+          width: pxToRem(14);
+          height: pxToRem(14);
+          position: absolute;
+          display: block;
+          background-color: #fff;
+          top: pxToRem(-5);
+          right: pxToRem(-8);
+          border-radius: 50%;
+          box-shadow: pxToRem(0.5) pxToRem(0.5) pxToRem(3) #000!important;
+        }
+      }
+    }
+  }
+
+  .play-or-pause {
+    position: absolute;
+    bottom: pxToRem(54);
+    right: pxToRem(16);
+    z-index: 1;
+
+    .icon {
+      width: pxToRem(46);
+      height: pxToRem(46);
+    }
+  }
+}

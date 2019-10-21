@@ -1,3 +1,10 @@
+@import "./pxtorem";
+
 .video-card-area {
   text-align: center;
+}
+
+.content-container {
+  margin-top: pxToRem(44);
+  min-height: 90vh;
 }

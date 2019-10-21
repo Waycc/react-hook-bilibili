@@ -8,12 +8,29 @@
   margin-bottom: pxToRem(24);
 
   .img-container {
+    display: inline-block;
     width: pxToRem(168);
     height: pxToRem(106);
     margin: 0 auto;
     border-radius: pxToRem(8);
     overflow: hidden;
     position: relative;
+    background-color: #e7e7e7;
+
+    .img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .icon {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent 50%,rgba(0,0,0,.5));
+    }
 
     .play-view-container {
       position: absolute;
@@ -22,6 +39,7 @@
       bottom: 0;
       left: 0;
       color: #fff;
+      z-index: 2;
       font-size: pxToRem(12);
       padding-left: pxToRem(8);
       padding-bottom: pxToRem(3);
