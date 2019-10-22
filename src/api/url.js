@@ -9,5 +9,6 @@ export const RANKING_REGION_URL = URL_PREFIX + '/ranking/region';
 export const ARCHIVE_RANK_URL = URL_PREFIX + '/archive_rank/getarchiverankbypartion';
 export const VIDEO_URL = URL_PREFIX + '/video';
 export const VIDEO_MP4_URL = URL_PREFIX + '/mp4';
+export const VIDEO_RELATED_URL = URL_PREFIX + '/archive/related';
 
 export const PIC_URL = URL_PREFIX + '/image';

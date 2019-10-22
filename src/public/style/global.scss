@@ -18,6 +18,10 @@ a {
   height: pxToRem(14);
 }
 
+.rotate-animation {
+  transition: all .1s;
+}
+
 .arrow-up {
   transform: rotate(180deg);
 }

@@ -10,21 +10,24 @@ import TVIcon from '../public/img/tv.svg'
 
 let defaultProps = {
   data: [],
+  style: {},
 }
 
 let propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  style: PropTypes.object
 }
 
 let VideoCard = function (props) {
   let data = props.data;
+  let { style } = props
 
   if (data.pic.indexOf("@320w_200h") === -1) {
     data.pic = getPicUrl(data.pic, "@320w_200h");
   }
 
   return (
-    <div className={'video-card-container'}>
+    <div className={'video-card-container'} style={{...style}}>
       <Link to={`/video/${data.aid}`} className={'img-container'}>
         <LazyLoadImg src={data.pic} className={'img'}/>
         <TVIcon className={'icon'}/>

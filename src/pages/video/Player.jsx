@@ -41,7 +41,7 @@ function Player(props) {
             height="100%"
             width="100%"
             preload="auto"
-            playsinline={true}
+            playsInline={true}
             // controls={true}
             src={getVideoUrl(videoInfo.initUrl)}
           />

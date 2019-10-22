@@ -2,14 +2,16 @@
 
 .video-container {
   background-color: #fff;
+  overflow-x: hidden;
 
   .video-desc {
     margin-top: pxToRem(24);
+    margin-bottom: pxToRem(16);
 
     .title-container {
       position: relative;
       display: flex;
-      align-items: center;
+      align-items: start;
       margin-bottom: pxToRem(8);
 
       .hot-tag {
@@ -39,11 +41,20 @@
         width: pxToRem(272);
         color: #212121;
         font-size: pxToRem(16);
+        line-height: pxToRem(24);
         margin-left: pxToRem(8);
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         margin-right: pxToRem(32);
+        max-height: pxToRem(24);
+        transition: max-height .1s;
+
+        &.open {
+          white-space: inherit;
+          text-overflow: inherit;
+          max-height: pxToRem(100);
+        }
       }
 
       .arrow{
@@ -55,7 +66,15 @@
     }
 
     .detail-container {
+      max-height: pxToRem(20);
       padding: 0 pxToRem(8);
+      overflow: hidden;
+      transition: max-height .1s;
+
+      &.open {
+        max-height: pxToRem(300);
+      }
+
       .owner {
         font-size: pxToRem(12);
         color: #212121;
@@ -93,5 +112,13 @@
         }
       }
     }
+  }
+
+  .related-video-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 0 pxToRem(4);
   }
 }

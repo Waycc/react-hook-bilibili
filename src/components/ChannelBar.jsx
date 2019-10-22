@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react';
 import {useMappedState} from "redux-react-hook";
 import {Link, withRouter} from 'react-router-dom'
 import pathToRegexp from 'path-to-regexp';
@@ -17,6 +17,14 @@ const ChannelBar = function (props) {
   if (match) {
     currentRid = parseInt(match[1])
   }
+  useEffect(() => {
+    let tabDom = document.querySelector('#rid' + currentRid);
+    if (tabDom) {
+      tabDom.scrollIntoView(true)
+    }
+    console.log(tabDom, 'tabDom')
+  }, [currentRid, channelBarMap])
+
   let currentChannel = channelBarMap[currentRid] || {};
   // 如果当前所选频道是二级频道，就从一级频道中取出二级频道渲染
   let childChannel = currentChannel.children || [];
@@ -43,7 +51,7 @@ const ChannelBar = function (props) {
               channelBarList.map(channelBar => {
                 let rid = channelBar.tid;
                 return (
-                  <Link to={rid === 0 ? '/index' : `/channel/${rid}`} key={rid} className={`first-class-tab-item`}>
+                  <Link to={rid === 0 ? '/index' : `/channel/${rid}`} key={rid} className={`first-class-tab-item`} id={`rid${rid}`}>
                     <p className={isSelected(rid, channelBar) ? 'selected-tab' : ''}>{channelBar.typename}</p>
                   </Link>
                 )

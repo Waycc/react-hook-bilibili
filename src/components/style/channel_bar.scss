@@ -58,6 +58,7 @@
         height: pxToRem(42);
         overflow-x: scroll;
         white-space: nowrap;
+        padding-bottom: pxToRem(6);
       }
     }
 
@@ -77,7 +78,7 @@
         height: pxToRem(42);
         overflow-x: scroll;
         padding-left: pxToRem(16);
-        padding-bottom: pxToRem(6);
+        padding-bottom: pxToRem(9);
         white-space: nowrap;
         
         .tab-item {
