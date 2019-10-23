@@ -10,5 +10,6 @@ export const ARCHIVE_RANK_URL = URL_PREFIX + '/archive_rank/getarchiverankbypart
 export const VIDEO_URL = URL_PREFIX + '/video';
 export const VIDEO_MP4_URL = URL_PREFIX + '/mp4';
 export const VIDEO_RELATED_URL = URL_PREFIX + '/archive/related';
+export const COMMENT_URL = URL_PREFIX + '/reply';
 
 export const PIC_URL = URL_PREFIX + '/image';

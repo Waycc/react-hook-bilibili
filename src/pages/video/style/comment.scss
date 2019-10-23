@@ -1,0 +1,13 @@
+@import "../../../public/style/pxtorem";
+
+.comment-list-container {
+  padding: 0 pxToRem(12);
+
+  .comment-top-title {
+    font-size: pxToRem(15);
+
+    .total-num {
+      color: #999
+    }
+  }
+}

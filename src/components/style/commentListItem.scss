@@ -1,0 +1,69 @@
+@import '../../public/style/pxtorem';
+
+.comment-list-item-container {
+  display: flex;
+  align-items: start;
+  padding: pxToRem(18) 0 pxToRem(15) 0;
+  border-bottom: pxToRem(0.5) solid #ccc;
+  font-size: pxToRem(12);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .user-avatar-container {
+    width: pxToRem(40);
+    height: pxToRem(40);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: pxToRem(8);
+    position: relative;
+
+    .no-avatar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .avatar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
+
+  .user-name-comment-container {
+    width: pxToRem(300);
+
+    .user-name-container {
+      color: #757575;
+
+      .user-name {
+        display: inline-block;
+        max-width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: pxToRem(16);
+        font-size: pxToRem(13);
+      }
+
+      .comment-publish-date {
+        float: right;
+        color: #999;
+        font-size: pxToRem(12);
+      }
+    }
+
+    .comment-container {
+      font-size: pxToRem(14);
+      color: #212121;
+      white-space: pre-line;
+      line-height: 1.5;
+    }
+  }
+}
