@@ -5,6 +5,7 @@ import pathToRegexp from 'path-to-regexp';
 import './style/channel_bar.scss'
 import {isEmpty} from "../util/tools";
 import ArrowDownIcon from '../public/img/arrow down.svg'
+import {Helmet} from "react-helmet";
 
 let channelPathRe = pathToRegexp('/channel/:rid')
 
@@ -22,7 +23,6 @@ const ChannelBar = function (props) {
     if (tabDom) {
       tabDom.scrollIntoView(true)
     }
-    console.log(tabDom, 'tabDom')
   }, [currentRid, channelBarMap])
 
   let currentChannel = channelBarMap[currentRid] || {};
@@ -43,6 +43,15 @@ const ChannelBar = function (props) {
 
   return (
     <div className={'channel-bar-container'}>
+      {
+        currentChannel.typename !== '首页' &&
+          <Helmet>
+            <title>{currentChannel.typename}</title>
+          </Helmet>
+      }
+      <Helmet>
+
+      </Helmet>
       {/*一级频道*/}
       <div className={'first-class-channel-container'}>
         <div className={'tab-bar-container'}>

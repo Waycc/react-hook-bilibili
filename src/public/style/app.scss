@@ -8,3 +8,13 @@
   margin-top: pxToRem(44);
   min-height: 90vh;
 }
+
+.load-more-container {
+  width: 100%;
+  background-color: #e7e7e7;
+  color: #fb7299;
+  text-align: center;
+  font-style: pxToRem(14);
+  line-height: pxToRem(40);
+  margin-bottom: pxToRem(24);
+}

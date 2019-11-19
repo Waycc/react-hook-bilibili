@@ -1,7 +1,7 @@
 @import '../../public/style/pxtorem';
 
 .channel-video-area {
-  .title-container {
+  .top-type-title-container {
     width: pxToRem(363);
     height: pxToRem(40);
     position: relative;
@@ -39,9 +39,12 @@
   }
 
   .video-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     min-height: pxToRem(142);
-    padding: pxToRem(6);
+    padding: pxToRem(6) pxToRem(12);
     box-sizing: border-box;
     position: relative;
     text-align: center;

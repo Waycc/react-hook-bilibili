@@ -180,7 +180,6 @@ let Carousel = function (props) {
     startAutoPlay()
   };
 
-  console.log(childrenCount, 'childrenCount')
   return (
     <div className={'carousel-outer-container'} >
       <div className={'carousel-wrap'}>

@@ -5,6 +5,7 @@ import NestRoutes from "./router/NestRoutes";
 import { BrowserRouter as Router } from "react-router-dom";
 import {fetchChannelBar} from "./redux/actions";
 import {useDispatch} from "redux-react-hook";
+import {Helmet} from "react-helmet";
 
 function App() {
   let dispatch = useDispatch();
@@ -16,6 +17,9 @@ function App() {
   return (
     <Router>
       <div>
+        <Helmet>
+          <title>高仿哔哩哔哩-( ゜- ゜)つロ干杯~ - bilbili</title>
+        </Helmet>
         <Header/>
         <div className={'content-container'}>
           <NestRoutes/>

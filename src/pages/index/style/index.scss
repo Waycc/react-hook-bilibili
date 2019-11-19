@@ -1,7 +1,10 @@
 @import "../../../public/style/pxtorem";
 
 .index-video-area-container {
-  padding: pxToRem(12) pxToRem(6);
+  padding: pxToRem(12) pxToRem(12);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .channel-index {

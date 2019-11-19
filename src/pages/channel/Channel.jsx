@@ -30,7 +30,7 @@ function Channel(props) {
         genVideoAreasWhenIsChild()
       }
     }
-  }, [currentRid, channelBarMap]);
+  }, [currentRid, channelBarMap, currentPage]);
 
   let genVideoAreasWhenIsParent = () => {
     let videoAreasDatas = [];
@@ -60,11 +60,21 @@ function Channel(props) {
         fetchFunc: fetchArchiveRank,
         typename: '最新视频',
         tid: currentChannel.tid,
+        currentPage: currentPage,
         limit: false,
+        loadMoreComponent: (
+          <div className={'load-more-container'}>
+            <span onClick={onLoadMoreClick}>点击加载更多</span>
+          </div>
+        )
       }
     ];
     setVideoAreaDatas(videoAreasDatas)
   };
+
+  let onLoadMoreClick = () => {
+    setCurrentPage(currentPage + 1)
+  }
 
   return (
     <div className={'channel-container'}>
@@ -74,7 +84,6 @@ function Channel(props) {
           return <ChannelVideoArea
             key={videoAreaData.typename + videoAreaData.tid}
             data={videoAreaData}
-            currentPage={currentPage}
             isParent={currentChannel.isParent}
           />
         })

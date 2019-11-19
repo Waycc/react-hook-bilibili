@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useMemo} from "react";
 import './style/video_card.scss'
 import {getPicUrl, numberToW} from "../util/tools";
 import PropTypes from "prop-types";
@@ -11,54 +11,61 @@ import TVIcon from '../public/img/tv.svg'
 let defaultProps = {
   data: [],
   style: {},
+  isRelated: false,
 }
 
 let propTypes = {
   data: PropTypes.object,
-  style: PropTypes.object
+  style: PropTypes.object,
+  isRelated: PropTypes.bool
 }
 
 let VideoCard = function (props) {
-  let data = props.data;
-  let { style } = props
+  let { style, isRelated, data } = props;
 
   if (data.pic.indexOf("@320w_200h") === -1) {
     data.pic = getPicUrl(data.pic, "@320w_200h");
   }
 
-  return (
-    <div className={'video-card-container'} style={{...style}}>
-      <Link to={`/video/${data.aid}`} className={'img-container'}>
-        <LazyLoadImg src={data.pic} className={'img'}/>
-        <TVIcon className={'icon'}/>
-        {/*<img alt={data.title} src={data.pic} style={{ width: '100%', height: '100%' }}/>*/}
-        {
-          (!!data.play || !!data.video_review )
-            ?
-          <div className={'play-view-container'}>
-            {
-              !!data.play &&
-              <div>
-                <PlayIcon className={'icon'}/>
-                <span className={'text'}>{ numberToW(data.play) }</span>
-              </div>
-            }
-            {
-              !!data.video_review &&
-              <div>
-                <DanMuShu className={'icon'}/>
-                <span className={'text'}>{ numberToW(data.video_review) }</span>
-              </div>
-            }
-          </div>
-            : null
-        }
-      </Link>
-      <div className={'title-container'}>
-        <p>{data.title}</p>
-      </div>
-    </div>
-  )
+  let playNum = isRelated ? data.stat.view : data.play;
+  let videoView = isRelated ? data.stat.danmaku : data.video_review;
+
+  let videoComponent = useMemo(() => {
+   return (
+     <div className={'video-card-container'} style={{...style}}>
+       <Link to={`/video/${data.aid}`} className={'link-to-video'}>
+         <div className={'img-container'}>
+           <LazyLoadImg src={data.pic} className={'img'}/>
+           <TVIcon className={'no-img-icon'}/>
+           {
+             (!!playNum || !!videoView )
+               ?
+               <div className={'play-view-container'}>
+                 {
+                   !!playNum &&
+                   <div>
+                     <PlayIcon className={'icon'}/>
+                     <span className={'text'}>{ numberToW(playNum) }</span>
+                   </div>
+                 }
+                 {
+                   !!videoView &&
+                   <div>
+                     <DanMuShu className={'icon'}/>
+                     <span className={'text'}>{ numberToW(videoView) }</span>
+                   </div>
+                 }
+               </div>
+               : null
+           }
+         </div>
+         <div className={'title-container'}>{data.title}</div>
+       </Link>
+     </div>
+   )
+  }, [data, isRelated]);
+
+  return videoComponent
 }
 
 VideoCard.propTypes = propTypes;

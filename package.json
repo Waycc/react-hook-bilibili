@@ -55,6 +55,7 @@
     "react-app-polyfill": "^1.0.4",
     "react-dev-utils": "^9.1.0",
     "react-dom": "^16.10.2",
+    "react-helmet": "^5.2.1",
     "react-router-dom": "^5.1.2",
     "react-svg": "^10.0.22",
     "redux": "^4.0.4",

@@ -9,29 +9,29 @@ import ArrowDown from '../../public/img/arrow down.svg'
 import Player from "./Player";
 import VideoCard from "../../components/VideoCard";
 import Comment from "./Comment";
+import {Helmet} from "react-helmet";
 
 function Video(props) {
   let { match } = props;
   let [videoData, setVideoData] = useState({});
   let [videoInfo, setVideoInfo] = useState({});
   let [relatedVideo, setRelatedVideo] = useState([]);
-  let [commentListData, setCommentListData] = useState([]); // 评论列表
-  let [pageInfo, setPageInfo] = useState({}); // 分页信息
   let [descOpen, setDescOpen] = useState(false);
-  let [commentPage, setCommentPage] = useState(1);
+
   let aid = match.params.aid;
 
   // 切换到别的视频时，清空当前视频的数据，这样才像重新到新的一个页面
   let resetStateWhenToOtherVideo = () => {
     setVideoInfo({});
     setRelatedVideo([]);
-    setCommentListData([]);
-    setPageInfo({});
-    setCommentPage(1);
   };
 
+  // aid改变代表切换了另一个视频
   useEffect(() => {
     resetStateWhenToOtherVideo();
+  }, [aid])
+
+  useEffect(() => {
     async function getVideoInfo(){
       let result = await api.fetchVideoInfo({ aid });
       setVideoData(result.data);
@@ -49,27 +49,11 @@ function Video(props) {
     getRelatedVideo()
   }, [aid]);
 
-  // 只有aid切换才请求，页数增加另外处理
-  useEffect(() => {
-    let _ = async () => {
-      let result = await getCommentData(aid, commentPage)
-      let data = result.data || {};
-      let replies = data.replies || [];
-      let pageInfo = data.page || {};
-      setCommentListData(commentListData => commentListData.concat(replies));
-      setPageInfo(pageInfo)
-    };
-    _()
-  }, [aid]);
-
-  // 通过传参而不是直接用aid和commentPage， 是方便监听scroll事件时用最新的参数去请求评论
-  async function getCommentData(aid, commentPage) {
-    return  await api.fetchCommentData({ aid, pn: commentPage});
-  }
-
-  console.log(commentListData, 222)
   return (
       <div className={'video-container'} key={props.location.pathname}>
+        <Helmet>
+          <title>{videoInfo.title}</title>
+        </Helmet>
         <Player videoInfo={videoInfo} className={'player-container'}/>
         {/*视频详情介绍*/}
         <div className={'video-desc'}>
@@ -109,12 +93,12 @@ function Video(props) {
           {
             relatedVideo.slice(0, 20).map(rv => {
               return (
-                <VideoCard data={rv} key={rv.aid}/>
+                <VideoCard data={rv} key={rv.aid} isRelated={true}/>
               )
             })
           }
         </div>
-        <Comment data={commentListData} pageInfo={pageInfo}/>
+        <Comment aid={aid}/>
       </div>
   )
 }

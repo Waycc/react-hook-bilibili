@@ -4,6 +4,7 @@
   position: relative;
   width: pxToRem(375);
   height: pxToRem(211);
+  overflow: hidden;
   background-color: rgba(60,60,60,.5);
 
   .cover-img {
@@ -90,7 +91,7 @@
 
   .play-or-pause {
     position: absolute;
-    bottom: pxToRem(54);
+    bottom: pxToRem(16);
     right: pxToRem(16);
     z-index: 1;
 

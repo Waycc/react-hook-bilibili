@@ -25,16 +25,20 @@ let propTypes = {
 
 let ChannelVideoArea = function (props) {
   let [ videos, setVideos ] = useState([]);
-  let { typename, fetchFunc, limit, tid } = props.data;
-  let { currentPage, isParent } = props;
+  let { typename, fetchFunc, limit, tid, currentPage, loadMoreComponent } = props.data;
+  let { isParent } = props;
 
   useEffect(() => {
     async function fetchData() {
       let videoData = await fetchFunc({rid: tid, page: currentPage});
+      if (currentPage) {
+        setVideos(videos.concat(videoData.data))
+        return
+      }
       setVideos(videoData.data || [])
     }
     fetchData()
-  }, []);
+  }, [tid, currentPage]);
 
   if (limit) {
     videos = videos.slice(0, limit)
@@ -42,7 +46,7 @@ let ChannelVideoArea = function (props) {
 
   return (
     <div className={'channel-video-area'}>
-      <div className={'title-container'}>
+      <div className={'top-type-title-container'}>
         <div className={'title'}>{typename === '推荐' ? '热门推荐' : typename}</div>
         <div className={'title-right'}>
           {
@@ -64,6 +68,9 @@ let ChannelVideoArea = function (props) {
             })
         }
       </div>
+      {
+        loadMoreComponent
+      }
     </div>
   )
 };

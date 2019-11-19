@@ -1,8 +1,6 @@
-import React, {Fragment, useRef, useState} from "react";
+// 原本是想自定义video的播放栏，但发现移动端似乎很难定制，放弃了
+import React, {Fragment, useEffect, useRef, useState} from "react";
 import {getPicUrl, isEmpty} from "../../util/tools";
-import BarrageOnIcon from "../../public/img/Icon_Barrage-On.svg";
-import BarrageOffIcon from "../../public/img/Icon_Barrage-Off.svg";
-import FullScreenIcon from "../../public/img/Icon_Fullscreen.svg";
 import TVPauseIcon from "../../public/img/TV-Pause .svg";
 import TVPlayIcon from "../../public/img/TV-Play.svg";
 import {VIDEO_MP4_URL} from "../../api/url";
@@ -29,6 +27,22 @@ function Player(props) {
   let videoRef = useRef();
   let [barrageOn, setBarrageOn] = useState(true);
   let [isPlay, setIsPlay] = useState(false);
+  let [isShowCover, setIsShowCover] = useState(true)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isPlay) {
+        videoRef.current.play()
+      } else {
+        videoRef.current.pause()
+      }
+    }
+  }, [isPlay]);
+
+  let onPlayOrPause = () => {
+    setIsPlay(isPlay => !isPlay);
+    setIsShowCover(false)
+  };
 
   return (
     <div className={className}>
@@ -37,35 +51,21 @@ function Player(props) {
         !isEmpty(videoInfo) &&
         <Fragment>
           <video
-            ref={videoRef}
             height="100%"
             width="100%"
             preload="auto"
+            x5-playsinline="true"
+            webkit-playsinline="true"
             playsInline={true}
-            // controls={true}
-            src={getVideoUrl(videoInfo.initUrl)}
-          />
-          <img src={getPicUrl(videoInfo.pic, "@480w_300h")} className={'cover-img'}/>
-          <div className={'control-container'}>
-            <div>
-              <span>00:00</span>
-              <span className={'bias'}>/</span>
-              <span>03:48</span>
-            </div>
-            <div>
-              <div className={'control-slider-container'}>
-                <div className={'active-slider'}/>
-              </div>
-            </div>
-            <div className={'icon-container'}>
-              {
-                barrageOn ? <BarrageOnIcon className={'icon'}/> :
-                  <BarrageOffIcon className={'icon'}/>
-              }
-              <FullScreenIcon className={'icon'}/>
-            </div>
-          </div>
-          <div className={'play-or-pause'}>
+            ref={videoRef}
+            controls
+            style={{ display: isShowCover ? 'none' : "block"}}
+          >
+            <source src={getVideoUrl(videoInfo.initUrl)} type={'video/mp4'}/>
+          </video>
+
+          { isShowCover && <img src={getPicUrl(videoInfo.pic, "@480w_300h")} className={'cover-img'}/> }
+          <div className={'play-or-pause'} onClick={onPlayOrPause} style={{ display: isShowCover ? 'block' : 'none'}}>
             {
               isPlay ? <TVPauseIcon className={'icon'}/> : <TVPlayIcon className={'icon'}/>
             }
