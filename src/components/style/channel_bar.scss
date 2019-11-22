@@ -36,6 +36,7 @@
     position: relative;
 
     .arrow-container {
+      text-align: center;
       position: absolute;
       width: pxToRem(32);
       height: pxToRem(32);
@@ -111,6 +112,7 @@
     -webkit-perspective: 1000;
 
     .arrow-container {
+      text-align: center;
       width: pxToRem(24);
       margin: pxToRem(8) auto;
     }

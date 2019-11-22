@@ -148,5 +148,5 @@
       "react-app"
     ]
   },
-  "proxy": "http://localhost:8800"
+  "proxy": "http://localhost:9010"
 }

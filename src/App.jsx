@@ -14,6 +14,13 @@ function App() {
     dispatch(fetchChannelBar())
   }, [dispatch]);
 
+  useEffect(()=>{
+    window.addEventListener('popstate', (e)=>{console.log(e, 'popstate')})
+  })
+
+  useEffect(()=>{
+    window.addEventListener('beforeunload', (e)=>{console.log(e, 'popstate')})
+  })
   return (
     <Router>
       <div>

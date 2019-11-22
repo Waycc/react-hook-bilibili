@@ -6,6 +6,7 @@ import './style/channel_bar.scss'
 import {isEmpty} from "../util/tools";
 import ArrowDownIcon from '../public/img/arrow down.svg'
 import {Helmet} from "react-helmet";
+import PropTypes from "prop-types";
 
 let channelPathRe = pathToRegexp('/channel/:rid')
 
@@ -39,7 +40,13 @@ const ChannelBar = function (props) {
   let onModalLinkClick = (rid) => {
     setChannelModalVisible(false);
     props.history.push(rid === 0 ? 'index' : `/channel/${rid}`)
+    props.cacheData();
   };
+
+  let onLinkClick = (path) => {
+    props.history.push(path);
+    props.cacheData();
+  }
 
   return (
     <div className={'channel-bar-container'}>
@@ -60,9 +67,9 @@ const ChannelBar = function (props) {
               channelBarList.map(channelBar => {
                 let rid = channelBar.tid;
                 return (
-                  <Link to={rid === 0 ? '/index' : `/channel/${rid}`} key={rid} className={`first-class-tab-item`} id={`rid${rid}`}>
+                  <a onClick={() => onLinkClick(rid === 0 ? '/index' : `/channel/${rid}`)} key={rid} className={`first-class-tab-item`} id={`rid${rid}`}>
                     <p className={isSelected(rid, channelBar) ? 'selected-tab' : ''}>{channelBar.typename}</p>
-                  </Link>
+                  </a>
                 )
               })
             }
@@ -82,9 +89,9 @@ const ChannelBar = function (props) {
                 childChannel.map(childChannel => {
                   let rid = childChannel.tid;
                   return (
-                    <Link to={`/channel/${rid}`} key={rid} className={'tab-item'}>
+                    <a onClick={() => onLinkClick(`/channel/${rid}`)} key={rid} className={'tab-item'}>
                       <p className={isSelected(rid, childChannel) ? `selected-tab` : ''}>{childChannel.typename}</p>
-                    </Link>
+                    </a>
                   )
                 })
               }
@@ -114,5 +121,13 @@ const ChannelBar = function (props) {
     </div>
   )
 };
+
+ChannelBar.defaultProps = {
+  cacheData() {},
+}
+
+ChannelBar.propTypes = {
+  cacheData: PropTypes.func
+}
 
 export default withRouter(ChannelBar)

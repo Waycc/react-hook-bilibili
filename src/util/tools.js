@@ -99,4 +99,20 @@ export const getPubdate = (timestamp) => {
       publicDate.getDate();
   }
   return publicDateStr;
+};
+
+export let ifFetch = (fetcher, history, pageKey) => {
+  if (history.action === 'PUSH' || !sessionStorage.getItem(pageKey)) {
+    fetcher()
+  }
 }
+
+export let setCacheData = (pageKey, funcList) => {
+  let cacheMap = funcList.reduce((accumulate, func) => ({...accumulate,  ...func() }), {});
+  sessionStorage.setItem(pageKey, JSON.stringify(cacheMap))
+};
+
+export let clearPageCache = (pageKey) => () => {
+  console.log('清除数据')
+  sessionStorage.removeItem(pageKey)
+};
