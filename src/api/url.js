@@ -11,5 +11,7 @@ export const VIDEO_URL = URL_PREFIX + '/video';
 export const VIDEO_MP4_URL = URL_PREFIX + '/mp4';
 export const VIDEO_RELATED_URL = URL_PREFIX + '/archive/related';
 export const COMMENT_URL = URL_PREFIX + '/reply';
+export const SEARCH_DEFAULT = URL_PREFIX + '/search/default'
+export const HOT_WORD = URL_PREFIX + '/hotword'
 
 export const PIC_URL = URL_PREFIX + '/image';

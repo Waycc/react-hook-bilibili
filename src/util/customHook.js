@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useCallback, useEffect, useLayoutEffect, useState} from "react";
 import {clearPageCache} from "./tools";
 
 // 每个使用useState的地方都用这个替换，当action为POP时会检测是否有缓存数据
@@ -16,12 +16,10 @@ export function useCacheState(initial, pageKey, stateKey, history, dependence=[]
       }
     }
   }, dependence);
-  console.log(data, stateKey, pageKey, 'out')
 
-  let getCacheDataMap = () => {
-    console.log(data, stateKey, pageKey, 'inner')
+  let getCacheDataMap = useCallback(() => {
     return {[stateKey]: data};
-  };
+  }, [stateKey, data]);
 
   return [data, setData, getCacheDataMap];
 }

@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import ChannelBar from "../../components/ChannelBar";
 import Carousel from "../../components/Carousel";
 import Api from '../../api/index';
 import VideoCard from "../../components/VideoCard";
 import './style/index.scss';
-import {clearPageCache, getPicUrl, ifFetch, setCacheData} from "../../util/tools";
+import {clearPageCache, getPicUrl, globalEventBus, ifFetch, setCacheData} from "../../util/tools";
 import {useCacheState, useClearPageCache} from "../../util/customHook";
+import {CACHE_PAGE} from "../../util/constants";
 
 export default function Index(props) {
   let pageKey = 'index';
@@ -14,6 +15,15 @@ export default function Index(props) {
   let [rankingData, setRankingData, getCacheRankingDataMap] = useCacheState([], pageKey, 'rankingData', history);
 
   useClearPageCache(pageKey);
+
+  let cacheData = useCallback(() => {
+    setCacheData('index', [getCacheLocDataMap, getCacheRankingDataMap]);
+  }, [getCacheLocDataMap, getCacheRankingDataMap]);
+
+  useEffect(() => {
+    globalEventBus.on(CACHE_PAGE, cacheData);
+    return () => globalEventBus.remove(CACHE_PAGE, cacheData)
+  }, [cacheData]);
 
   useState(async () => {
     ifFetch(async () => {
@@ -28,10 +38,6 @@ export default function Index(props) {
       setRankingData(rankingIndex.data);
     }, history, pageKey);
   }, [rankingData, history]);
-
-  let cacheData = () => {
-    setCacheData('index', [getCacheLocDataMap, getCacheRankingDataMap]);
-  };
 
   return (
     <div className={'channel-index video-card-area'}>

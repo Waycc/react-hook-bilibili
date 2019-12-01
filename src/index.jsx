@@ -6,10 +6,13 @@ import './public/style/normalize.scss'
 import * as serviceWorker from './serviceWorker';
 import {StoreContext} from 'redux-react-hook';
 import store from './redux/store'
+import {BrowserRouter as Router} from "react-router-dom";
 
 ReactDOM.render(
   <StoreContext.Provider value={store}>
-    <App/>
+    <Router>
+      <App/>
+    </Router>
   </StoreContext.Provider>,
   document.getElementById('root'));
 

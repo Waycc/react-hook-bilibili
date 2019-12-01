@@ -1,0 +1,95 @@
+@import '../../../public/style/pxtorem';
+
+.search-page{
+  width: 100%;
+
+  .fixed-search-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: pxToRem(44);
+    padding: 0 pxToRem(12);
+    box-sizing: border-box;
+
+    .cancel-button {
+      float: right;
+      right: 0;
+      color: #fb7299;
+      font-size: pxToRem(15);
+      margin-top: pxToRem(14);
+    }
+
+    .search-input-container {
+      display: inline-block;
+      width: pxToRem(309);
+      height: pxToRem(30);
+      margin-top: pxToRem(8);
+      position: relative;
+
+      .search-icon {
+        width: pxToRem(22);
+        height: pxToRem(22);
+        position: absolute;
+        left: pxToRem(10);
+        top: pxToRem(5);
+      }
+      .search-input {
+        width: 100%;
+        height: 100%;
+        padding-left: pxToRem(40);
+        padding-right: pxToRem(100);
+        outline: none;
+        box-sizing: border-box;
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: #f4f4f4;
+        border: pxToRem(0.5) solid #e7e7e7;
+        color: #505050;
+        border-radius: pxToRem(4);
+        font-size: pxToRem(13);
+      }
+    }
+  }
+
+  .search-content {
+    .label {
+      font-size: 14px;
+      color: #999999;
+    }
+
+    .hot-word-container {
+      padding: 0 pxToRem(12);
+      padding-top: pxToRem(16);
+      margin-bottom: pxToRem(24);
+
+      .hot-word-area {
+        display: flex;
+        flex-wrap: wrap;
+        height: pxToRem(93);
+        box-sizing: border-box;
+        overflow: hidden;
+
+        .hot-word-item {
+          margin-top: pxToRem(12);
+          margin-right: pxToRem(8);
+          padding: pxToRem(8) pxToRem(12);
+          border: pxToRem(1) solid #ccc;
+          border-radius: pxToRem(16);
+          font-size: pxToRem(13);
+          color: #505050;
+        }
+      }
+    }
+
+    .divider {
+      width: 100%;
+      height: pxToRem(12);
+      background-color: #f4f4f4;
+    }
+
+    .search-history-container {
+      padding: pxToRem(14) pxToRem(12);
+    }
+  }
+
+}

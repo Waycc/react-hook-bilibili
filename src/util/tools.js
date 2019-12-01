@@ -116,3 +116,34 @@ export let clearPageCache = (pageKey) => () => {
   console.log('清除数据')
   sessionStorage.removeItem(pageKey)
 };
+
+export class EventBus{
+  eventMap = {};
+
+  getEventList = (name) => {
+    return this.eventMap[name] || []
+  }
+
+  setEventList = (name, eventList) => {
+    this.eventMap[name] = eventList
+  }
+
+  on = (name, func) => {
+    let eventList = this.getEventList(name);
+    eventList.push(func);
+    this.setEventList(name, eventList);
+  };
+
+  emit = (name, ...params) => {
+    let eventList = this.getEventList(name);
+    eventList.forEach(func => func(params))
+  };
+
+  remove = (name, func) => {
+    let eventList = this.getEventList(name);
+    eventList = eventList.filter(fun => fun !== func);
+    this.setEventList(name, eventList)
+  }
+}
+
+export let globalEventBus = new EventBus();
