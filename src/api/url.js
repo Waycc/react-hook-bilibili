@@ -13,5 +13,6 @@ export const VIDEO_RELATED_URL = URL_PREFIX + '/archive/related';
 export const COMMENT_URL = URL_PREFIX + '/reply';
 export const SEARCH_DEFAULT = URL_PREFIX + '/search/default'
 export const HOT_WORD = URL_PREFIX + '/hotword'
+export const SUGGEST_URL = URL_PREFIX + '/suggest'
 
 export const PIC_URL = URL_PREFIX + '/image';

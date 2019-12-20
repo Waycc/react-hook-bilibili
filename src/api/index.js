@@ -1,7 +1,7 @@
 import { fetchChannelBar } from "./channel_bar";
 import {fetchIndexRanking, fetchLoc} from "./ranking";
 import {fetchVideoInfo, fetchRelated, fetchCommentData} from "./video";
-import {getSearchDefault, getHotWord} from "./search";
+import {getSearchDefault, getHotWord, getSuggest} from "./search";
 
 export default {
   fetchChannelBar,
@@ -11,5 +11,6 @@ export default {
   fetchRelated,
   fetchCommentData,
   getSearchDefault,
-  getHotWord
+  getHotWord,
+  getSuggest,
 }

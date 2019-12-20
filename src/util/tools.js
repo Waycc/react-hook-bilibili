@@ -113,7 +113,6 @@ export let setCacheData = (pageKey, funcList) => {
 };
 
 export let clearPageCache = (pageKey) => () => {
-  console.log('清除数据')
   sessionStorage.removeItem(pageKey)
 };
 
@@ -143,6 +142,16 @@ export class EventBus{
     let eventList = this.getEventList(name);
     eventList = eventList.filter(fun => fun !== func);
     this.setEventList(name, eventList)
+  }
+}
+
+export function debounce(func, time) {
+  let timeout = null;
+  return function (...params) {
+    clearTimeout(timeout);
+    setTimeout(() => {
+      func(...params)
+    }, time)
   }
 }
 

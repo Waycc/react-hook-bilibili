@@ -1,4 +1,4 @@
-import {SEARCH_DEFAULT, HOT_WORD} from "./url";
+import {SEARCH_DEFAULT, HOT_WORD, SUGGEST_URL} from "./url";
 import {get} from "./fetch";
 
 export function getSearchDefault() {
@@ -7,4 +7,8 @@ export function getSearchDefault() {
 
 export function getHotWord() {
   return get(HOT_WORD)
+}
+
+export function getSuggest(keyword) {
+  return get(SUGGEST_URL + '?keyword=' + keyword)
 }
