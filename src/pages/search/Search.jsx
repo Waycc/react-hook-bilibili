@@ -7,6 +7,7 @@ import {withRouter} from "react-router-dom";
 import api from '../../api/index';
 import {SEARCH_HISTORY, SEARCH_REFERER} from "../../util/constants";
 import {debounce} from "../../util/tools";
+import SearchResult from "./components/SearchResult";
 
 let suggestTag = 0;
 
@@ -20,6 +21,7 @@ function Search(props) {
   let [showSuggestArea, setShowSuggestArea] = useState(false);
   let [showSearchResult, setShowSearchResult] = useState(false);
   let [searchResult, setSearchResult] = useState([])
+  let [updateKeyword, setUpdateKeyword] = useState(0)
 
   let locationSearch = props.location.search;
 
@@ -30,13 +32,14 @@ function Search(props) {
     setShowSuggestArea(showSuggest);
   };
 
-  useEffect(() => {
+  useEffect(function getSearchResult() {
     let keyword = locationSearch.split('=')[1] || '';
     setSearchValueAndShowSuggestArea(decodeURI(keyword));
-    let fetchSearchResult = () => {
-
+    if (keyword) {
+      setShowSearchResult(true)
+      setShowSuggestArea(false)
     }
-  }, [locationSearch]);
+  }, [locationSearch, updateKeyword]);
 
   useEffect(() => {
     let getHotWord = async () => {
@@ -82,6 +85,7 @@ function Search(props) {
 
   let onKeywordClick = (keyword) => {
     enterPageWithNewKeyword(keyword);
+    setUpdateKeyword(updateKeyword => updateKeyword + 1)
   };
 
   let onSearchInputKeyDown = (e) => {
@@ -105,16 +109,16 @@ function Search(props) {
 
   let onSearchInputValueChange = (e) => {
     getSuggest(e.target.value);
+    setShowSearchResult(false);
     setSearchValueAndShowSuggestArea(e.target.value);
   };
 
   let onCloseSearchClick = () => {
     setSearchValueAndShowSuggestArea('');
-    setShowSearchResult('');
+    setShowSearchResult(false);
     setSearchResult([])
   };
 
-  console.log(suggestData, 'suggestData');
   let searchHistory = useMemo(() => getSearchHistory(), [historyChange]);
   return (
     <div className={'search-page'}>
@@ -159,7 +163,7 @@ function Search(props) {
         </div>
       }
       {
-        showSuggestArea && !showSearchResult &&
+        showSuggestArea &&
         <div className={'suggest-area'}>
           {
             suggestData.map(sd =>
@@ -167,6 +171,10 @@ function Search(props) {
                    onClick={setSearchHistory(sd.value)}/>)
           }
         </div>
+      }
+      {
+        showSearchResult &&
+          <SearchResult/>
       }
     </div>
   );

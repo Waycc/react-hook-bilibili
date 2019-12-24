@@ -1,0 +1,28 @@
+@import '../../../../public/style/pxtorem';
+
+.search-result-header {
+  position: fixed;
+  top: pxToRem(44);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  height: pxToRem(44);
+  padding: 0 pxToRem(20);
+  z-index: 1;
+  box-sizing: border-box;
+
+  .search-result-header-item {
+    color: #757575;
+    font-size: pxToRem(14);
+    padding: 0 pxToRem(3);
+    line-height: pxToRem(32);
+    border-bottom: pxToRem(2) solid #ffffff;
+
+    &.selected {
+      color: #fb7299;
+      border-bottom: pxToRem(2) solid #fb7299;
+    }
+  }
+}

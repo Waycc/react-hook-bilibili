@@ -14,5 +14,7 @@ export const COMMENT_URL = URL_PREFIX + '/reply';
 export const SEARCH_DEFAULT = URL_PREFIX + '/search/default'
 export const HOT_WORD = URL_PREFIX + '/hotword'
 export const SUGGEST_URL = URL_PREFIX + '/suggest'
+export const ALL_SEARCH = URL_PREFIX + '/search/all';
+export const TYPE_SEARCH = URL_PREFIX + '/search/type';
 
 export const PIC_URL = URL_PREFIX + '/image';

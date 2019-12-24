@@ -137,8 +137,7 @@
 
 
   .suggest-area {
-    //background-color: rgb(244, 244, 244);
-    height:100vh;
+    height:calc(100vh - 1.83rem);
 
     .suggest-item {
       padding: pxToRem(16) 0;

@@ -64,6 +64,9 @@ export function getPicSuffix(){
 export function getPicUrl(url, format) {
   let suffix = getPicSuffix();
   // picURL + "?pic=" + url + "@480w_300h.webp"
+  if (!url.startsWith('http')){
+    url = 'https:' + url
+  }
   return `${PIC_URL}?pic=${url}${format + suffix}`;
 }
 
