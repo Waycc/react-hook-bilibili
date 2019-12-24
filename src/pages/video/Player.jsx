@@ -19,6 +19,9 @@ let defaultProps = {
 
 function getVideoUrl(url) {
   // 拼接播放源地址
+  if (url.startsWith('https')) {
+    return `${VIDEO_MP4_URL}?video=${encodeURIComponent(url)}`
+  }
   return `${VIDEO_MP4_URL}?video=https:${encodeURIComponent(url)}`;
 }
 
