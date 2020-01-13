@@ -19,10 +19,8 @@ npm run start
 ```
 
 ### 项目截图
-<div>
-  <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E9%A6%96%E9%A1%B5.jpg" alt="首页" title="首页" width="230" height="450" style="display:inline-block"/>
-  <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%B8%B8%E6%88%8F%E5%88%86%E7%B1%BB.jpg" alt="游戏分类" title="游戏分类" width="230" height="450" style="display:inline-block"/>
-  <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E8%A7%86%E9%A2%91%E9%A1%B5.jpg" alt="视频页" title="视频页" width="230" height="450" style="display:inline-block"/>
-  <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%90%9C%E7%B4%A2.jpg" alt="搜索界面" title="搜索界面" width="230" height="450" style="display:inline-block"/>
-  <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C.jpg" alt="搜索结果" title="搜索结果" width="230" height="450" style="display:inline-block"/>
-</div>
+![首页](https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E9%A6%96%E9%A1%B5.png) 
+![游戏分类](https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%B8%B8%E6%88%8F%E5%88%86%E7%B1%BB.png) 
+![视频页](https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E8%A7%86%E9%A2%91%E9%A1%B5.png) 
+![搜索界面](https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%90%9C%E7%B4%A2.png) 
+![搜索结果](https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C.png) 
