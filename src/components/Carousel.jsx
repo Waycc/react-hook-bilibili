@@ -56,7 +56,12 @@ export default function Carousel(props) {
   }, [children]);
 
   useEffect(() => {
-    setViewWidth(carouselItemContainer.current.offsetWidth);
+    let onResize = () => {
+      setViewWidth(carouselItemContainer.current.offsetWidth);
+    };
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize)
   }, []);
 
   useEffect(() => {
