@@ -81,6 +81,7 @@
         padding-left: pxToRem(16);
         padding-bottom: pxToRem(9);
         white-space: nowrap;
+        overflow-y: hidden;
         
         .tab-item {
           display: inline-block;
