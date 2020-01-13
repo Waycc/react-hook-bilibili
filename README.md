@@ -19,7 +19,7 @@ npm run start
 ```
 
 ### 项目截图
-<div align="center">
+<div>
   <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E9%A6%96%E9%A1%B5.jpg" alt="首页" title="首页" width="230" height="450" style="display:inline-block"/>
   <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E6%B8%B8%E6%88%8F%E5%88%86%E7%B1%BB.jpg" alt="游戏分类" title="游戏分类" width="230" height="450" style="display:inline-block"/>
   <img src="https://github.com/Waycc/react-hook-bilibili/blob/master/screenshot/bilibili_%E8%A7%86%E9%A2%91%E9%A1%B5.jpg" alt="视频页" title="视频页" width="230" height="450" style="display:inline-block"/>
